@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('m_kategori', function (Blueprint $table) {
-            //
+        Schema::create('m_kategori', function (Blueprint $table) {
+            $table->id('kategori_id');
+            $table->string('kategori_kode', 10);
+            $table->string('kategori_nama', 100);
+            $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
