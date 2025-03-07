@@ -10,7 +10,7 @@ class UserController extends Controller
     public function index()
     {
         // //coba akses model UserModel
-        // $user = USerModel::all(); // ambil semua data dari tabel m_user
+        // $user = UserModel::all(); // ambil semua data dari tabel m_user
         // return view('user', ['data' => $user]);
 
         //tambah data user dengan Eloquent Model
