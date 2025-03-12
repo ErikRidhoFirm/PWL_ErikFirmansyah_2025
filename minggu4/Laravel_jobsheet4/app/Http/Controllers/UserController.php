@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        // //coba akses model UserModel
+        //coba akses model UserModel\
         // $user = UserModel::all(); // ambil semua data dari tabel m_user
         // return view('user', ['data' => $user]);
 
@@ -22,10 +22,20 @@ class UserController extends Controller
         // ];
         // UserModel::insert($data); //tambahkan data ke tabel m_user
 
-        $data = [
-            'nama' => 'Pelanggan Pertama',
-        ];
-        UserModel::where('username', 'customer-5')->update($data);
+        // $data = [
+        //     'nama' => 'Pelanggan Pertama',
+        // ];
+        // UserModel::where('username', 'customer-5')->update($data);
     
+        // ============ jobsheet 4 ===========
+        $data = [
+            'level_id' => 2,
+            'username' => 'manager_dua',
+            'nama' => 'Manager 2',
+            'password' => Hash::make('12345')
+        ];
+        UserModel::create($data);
+        $user = UserModel::all(); // ambil semua data dari tabel m_user
+        return view('user', ['data' => $user]);
     }
 }
