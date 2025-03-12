@@ -68,7 +68,15 @@ class UserController extends Controller
         // dd($user); //digunakan untuk memberhentikan eksekusi kode dan menampilkan jumlah pengguna
         // return view('user', ['data' => $user]);
 
-        $user = UserModel::where('level_id', 2)->count();
-        return view('user', ['data' => $user]);
+        // $user = UserModel::where('level_id', 2)->count();
+        // return view('user', ['data' => $user]);
+
+        $user = UserModel::firstOrCreate(
+            [
+                'username' => 'manager',
+                'nama' => 'Manager',
+            ],
+        );
+        return view('user', ['data' => $user]);        
     }
 }

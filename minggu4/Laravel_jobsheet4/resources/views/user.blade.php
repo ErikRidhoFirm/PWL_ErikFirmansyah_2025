@@ -23,13 +23,30 @@
         {{-- @endforeach --}} 
 
 {{--============= Jobsheet 4 ================--}}
-        <tr>
+        {{-- <tr>
             <th>Jumlah Pengguna</th>
         </tr>
         {{-- @foreach ($data as $d) --}}
-        <tr>
-            <td>{{ $data }}</td>
+        {{-- <tr>
+            <td>{{ $data }}</td> --}}
         {{-- @endforeach --}}
+
+
+        {{--Praktikkum 2.4--}}
+            <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Nama</th>
+            <th>ID Level Pengguna</th>
+        </tr>
+        {{-- @foreach ($data as $d) --}}
+        <tr>
+            <td>{{ $data->user_id }}</td>
+            <td>{{ $data->username }}</td>
+            <td>{{ $data->nama }}</td>
+            <td>{{ $data->level_id }}</td>
+        </tr>
+        {{-- @endforeach  --}}
     </table>
 </body>
 </html>
