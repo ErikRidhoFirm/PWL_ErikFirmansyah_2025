@@ -42,7 +42,10 @@ class UserController extends Controller
         // $user = UserModel::find(1);
         // return view('user', ['data' => $user]);
 
-        $user = UserModel::where('level_id', 1)->first();
+        // $user = UserModel::where('level_id', 1)->first();
+        // return view('user', ['data' => $user]);
+
+        $user = UserModel::firstwhere('level_id', 1);
         return view('user', ['data' => $user]);
     }
 }
