@@ -35,7 +35,14 @@ class UserController extends Controller
         //     'password' => Hash::make('12345')
         // ];
         // UserModel::create($data);
-        $user = UserModel::where('level_id', 1)->first(); // ambil semua data dari tabel m_user
+
+        // $user = UserModel::all();
+        // return view('user', ['data' => $user]);
+
+        // $user = UserModel::find(1);
+        // return view('user', ['data' => $user]);
+
+        $user = UserModel::where('level_id', 1)->first();
         return view('user', ['data' => $user]);
     }
 }
