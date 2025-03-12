@@ -181,4 +181,11 @@ class UserController extends Controller
         ]);
         return redirect('/user');
     }
+
+    //praktikkum 2.6 no. 13
+    public function ubah($id)
+    {
+        $user = UserModel::find($id);
+        return view('user_ubah', ['data' => $user]);
+    }
 }
