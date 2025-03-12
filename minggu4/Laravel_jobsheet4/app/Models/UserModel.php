@@ -19,7 +19,9 @@ class UserModel extends Model
     */
     
     // ============ jobsheet 4 ===================
-    // protected $fillable = ['level_id', 'username', 'nama', 'password'];
-    protected $fillable = ['level_id', 'username', 'nama']; //pada praktikum 2.1 terdapat error dibagian ini yang akan berpengaruh pada UserController, 
+    // protected $fillable = ['level_id', 'username', 'nama', 'password']; Praktikkum 1
+
+    // protected $fillable = ['level_id', 'username', 'nama']; //pada praktikum 2.1 terdapat error dibagian ini yang akan berpengaruh pada UserController, 
                                                             //jadi diberikan solusi pada variable fillable, dengan menambahkan 'password' didalamnya.
+    protected $fillable = ['level_id', 'username', 'nama', 'password'];
 }
