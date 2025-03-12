@@ -27,3 +27,6 @@ Route::get('/user', [UserController::class, 'index']);
 //====== Jobsheet 4 =======
 //praktikkum 2.6 no.5
 Route::get('/user/tambah', [UserController::class, 'tambah']);
+
+//praktikkum 2.6 no.8
+Route::post('/user/tambah_simpan', [UserController::class, 'tambah_simpan']);
