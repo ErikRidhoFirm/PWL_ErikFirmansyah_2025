@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index()
-    {
+    // public function index()
+    // {
         //coba akses model UserModel\
         // $user = UserModel::all(); // ambil semua data dari tabel m_user
         // return view('user', ['data' => $user]);
@@ -161,9 +161,9 @@ class UserController extends Controller
     // $user->wasChanged('nama');  //false
     // dd($user->wasChanged(['nama', 'username']));  //true
 
-    $user = UserModel::all();
-    return view ('user', ['data' => $user]);
-    }
+    // $user = UserModel::all();
+    // return view ('user', ['data' => $user]);
+    // }
 
     public function tambah()
     {
@@ -211,5 +211,12 @@ class UserController extends Controller
         $user->delete();
 
         return redirect('/user');
+    }
+
+    //praktikkum 2.7 no. 2
+    public function index()
+    {
+        $user = UserModel::with('level')->get();
+        dd($user);
     }
 }
