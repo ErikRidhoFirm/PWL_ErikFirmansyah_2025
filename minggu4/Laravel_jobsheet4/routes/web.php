@@ -33,3 +33,6 @@ Route::post('/user/tambah_simpan', [UserController::class, 'tambah_simpan']);
 
 //praktikkum 2.6 no. 12
 Route::get('/user/ubah/{id}', [UserController::class, 'ubah']);
+
+//praktikkum 2.6 no. 15
+Route::put('/user/ubah_simpan/{id}', [UserController::class, 'ubah_simpan']);
