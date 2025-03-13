@@ -203,4 +203,13 @@ class UserController extends Controller
 
         return redirect('/user');
     }
+
+    //praktikkum 2.6 no. 19
+    public function hapus($id)
+    {
+        $user = UserModel::find($id);
+        $user->delete();
+
+        return redirect('/user');
+    }
 }
