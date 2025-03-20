@@ -39,3 +39,8 @@ Route::put('/user/ubah_simpan/{id}', [UserController::class, 'ubah_simpan']);
 
 //praktikkum 2.6 no. 18
 Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
+
+//============== Jobsheet 5 =============
+// praktikkum 3 nomer 1
+Route::get('/kategori/create', [KategoriController::class, 'create']);
+Route::post('/kategori', [KategoriController::class, 'store']);
