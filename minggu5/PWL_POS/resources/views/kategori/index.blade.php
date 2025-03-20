@@ -11,6 +11,8 @@
     <div class="card">
         <div class="card-header">Manager Kategori</div>
         <div class="card-body">
+            {{-- kode untuk menambahkan tombol tambah ke halaman kategori --}}
+            <button class="btn btn-primary" onclick="window.location.href = '/kategori/create'">+ Tambah</button>
             {{ $dataTable->table() }}
         </div>
     </div>
