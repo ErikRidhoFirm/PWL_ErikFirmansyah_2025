@@ -53,3 +53,6 @@ Route::get('/kategori/{id}/edit', [KategoriController::class, 'edit'])->name('ka
 Route::put('/kategori/{id}', [KategoriController::class, 'update'])->name('kategori.update');
 
 Route::resource('kategori', KategoriController::class);
+
+Route::resource('kategori', KategoriController::class);
+Route::get('/kategori/delete/{id}', [KategoriController::class, 'delete'])->name('kategori.delete');
