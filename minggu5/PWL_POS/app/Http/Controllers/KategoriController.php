@@ -50,4 +50,25 @@ class KategoriController extends Controller
             ]);
             return redirect('/kategori');
         }
+        public function edit($id)
+  {
+    $kategori = KategoriModel::findOrFail($id);
+    return view('kategori.edit', compact('kategori'));
+  }
+
+  public function update(Request $request, $id)
+  {
+    $request->validate([
+      'kategori_kode' => 'required|string|max:100',
+      'kategori_nama' => 'required|string|max:100',
+    ]);
+
+    $kategori = KategoriModel::findOrFail($id);
+    $kategori->update([
+      'kategori_kode' => $request->kategori_kode,
+      'kategori_nama' => $request->kategori_nama,
+    ]);
+
+    return redirect()->route('kategori.index')->with('Berhasil','Kategori telah di-update!' );
+  }
     }
