@@ -327,6 +327,11 @@ return [
             'label' => 4,
             'label_color' => 'success',
         ],
+        [   // membuat kode baru untuk menambahkan manage kategori di navbar
+            'text' => 'manage kategori',
+            'url' => '/kategori',
+            'icon' => 'far fa-fw fa-file',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
