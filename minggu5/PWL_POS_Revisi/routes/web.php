@@ -41,9 +41,9 @@ use Illuminate\Support\Facades\Controller;
 // //praktikkum 2.6 no. 18
 // Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
 
-// // jobsheet 5 revisi 
-// // praktikkum 2 no 4
-// Route::get('/', [WelcomeController::class, 'index']);
+// jobsheet 5 revisi 
+// praktikkum 2 no 4
+Route::get('/', [WelcomeController::class, 'index']);
 
 // jobsheet 5 praktikkum 3 no 3
 Route::group(['prefix' => 'user'], function() {
