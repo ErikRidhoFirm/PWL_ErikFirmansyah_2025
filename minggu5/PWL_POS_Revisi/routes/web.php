@@ -3,6 +3,7 @@
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Controller;
 /*
@@ -39,3 +40,7 @@ Route::put('/user/ubah_simpan/{id}', [UserController::class, 'ubah_simpan']);
 
 //praktikkum 2.6 no. 18
 Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
+
+// jobsheet 5 revisi 
+// praktikkum 2 no 4
+Route::get('/', [WelcomeController::class, 'index']);
