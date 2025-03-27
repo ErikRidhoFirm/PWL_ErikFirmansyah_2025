@@ -165,53 +165,53 @@ class UserController extends Controller
     // return view ('user', ['data' => $user]); //mengirimkan data tersebut ke halaman view
     // }
 
-    public function tambah()
-    {
-        return view('user_tambah');
-    }
+    // public function tambah()
+    // {
+    //     return view('user_tambah');
+    // }
     
     //praktikkum 2.6 no. 9
-    public function tambah_simpan(Request $request) //menerima form melalui inputan
-    {
-        UserModel::create([ //membuat data baru
-            'username' => $request->username,
-            'nama' => $request->nama,
-            'password' => Hash::make('$request->password'),
-            'level_id' => $request->level_id
-        ]);
-        return redirect('/user');   //mengirimkan tampilan kepada view 'user.blade.php'
-    }
+    // public function tambah_simpan(Request $request) //menerima form melalui inputan
+    // {
+    //     UserModel::create([ //membuat data baru
+    //         'username' => $request->username,
+    //         'nama' => $request->nama,
+    //         'password' => Hash::make('$request->password'),
+    //         'level_id' => $request->level_id
+    //     ]);
+    //     return redirect('/user');   //mengirimkan tampilan kepada view 'user.blade.php'
+    // }
 
     //praktikkum 2.6 no. 13
-    public function ubah($id)   //mengambil data yang sesuai dengan ID yang dipilih
-    {
-        $user = UserModel::find($id);   //mencari ID yang dipilih
-        return view('user_ubah', ['data' => $user]);    //mengirimkan tampilan ke 'user.blade.php'
-    }
+    // public function ubah($id)   //mengambil data yang sesuai dengan ID yang dipilih
+    // {
+    //     $user = UserModel::find($id);   //mencari ID yang dipilih
+    //     return view('user_ubah', ['data' => $user]);    //mengirimkan tampilan ke 'user.blade.php'
+    // }
 
     //praktikkum 2.6 no. 16
-    public function ubah_simpan($id, Request $request)  //digunakan untuk menerima inputan dari form
-    {
-        $user = UserModel::find($id);   //mencari data yang sesuai berdasarkan ID nya
+    // public function ubah_simpan($id, Request $request)  //digunakan untuk menerima inputan dari form
+    // {
+    //     $user = UserModel::find($id);   //mencari data yang sesuai berdasarkan ID nya
 
-        $user->username = $request->username;
-        $user->nama = $request->nama;
-        $user->password = Hash::make('$request->password');
-        $user->level_id = $request->level_id;
+    //     $user->username = $request->username;
+    //     $user->nama = $request->nama;
+    //     $user->password = Hash::make('$request->password');
+    //     $user->level_id = $request->level_id;
 
-        $user->save(); //menyimpan perubahan data
+    //     $user->save(); //menyimpan perubahan data
 
-        return redirect('/user');   //menampilkan hasilnya ke halaman view
-    }
+    //     return redirect('/user');   //menampilkan hasilnya ke halaman view
+    // }
 
     //praktikkum 2.6 no. 19
-    public function hapus($id)  //menghapus data sesuai ID 
-    {
-        $user = UserModel::find($id);   //mencari data nya berdasarkan ID
-        $user->delete();    //menghapus data dari databse
+    // public function hapus($id)  //menghapus data sesuai ID 
+    // {
+    //     $user = UserModel::find($id);   //mencari data nya berdasarkan ID
+    //     $user->delete();    //menghapus data dari databse
 
-        return redirect('/user');   //menampilkan hasil ke tampilan view
-    }
+    //     return redirect('/user');   //menampilkan hasil ke tampilan view
+    // }
 
     //praktikkum 2.7 no. 2
     // public function index()  //mengambil semua data dari table user
@@ -221,9 +221,26 @@ class UserController extends Controller
     // }
 
     //praktikkum 2.7 no 4
-    public function index() //mengambil semua data dari tabel user 
+    // public function index() //mengambil semua data dari tabel user 
+    // {
+    //     $user = UserModel::with('level')->get();    //data diambil dari tabel user berdasarkan level_id pada user
+    //     return view('user', ['data' => $user]); //mengirimkan data nya ketampilan view
+    // }
+
+    //jobsheet 5 no 4
+    //menampilkan halaman awal user
+    public function index()
     {
-        $user = UserModel::with('level')->get();    //data diambil dari tabel user berdasarkan level_id pada user
-        return view('user', ['data' => $user]); //mengirimkan data nya ketampilan view
+        $breadcrumb = (object)[
+            'title' => 'Daftar User',
+            'list' =>['Home', 'User']
+        ];
+
+        $page = (object)[
+            'title' => 'Daftar user yang terdaftar dalam sistem'
+        ];
+
+        $activeMenu = 'user'; // set menu yang sedang aktif
+        return view('user.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $activeMenu]);
     }
 }
