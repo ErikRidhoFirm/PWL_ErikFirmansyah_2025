@@ -286,6 +286,7 @@ public function create(){
     return view('user.create', ['breadcrumb' => $breadcrumb, 'page' => $page, 'level', 'activeMenu' => $activeMenu]);
 }
 
+// praktikkum 3 no-11
 // menyimpan data user baru 
 public function store(Request $request)
 {
