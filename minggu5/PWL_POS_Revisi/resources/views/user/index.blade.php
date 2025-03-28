@@ -59,6 +59,9 @@
                     "url": "{{ url('user/list') }}",
                     "dataType": "json",
                     "type": "POST"
+                    "data": function (d) {
+                        d.level = $('#level_id').val();
+                    }
                 },
                 columns: [
                     {
