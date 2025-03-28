@@ -60,7 +60,7 @@
                     "dataType": "json",
                     "type": "POST",
                     "data": function (d) {
-                        d.level = $('#level_id').val();
+                        d.level_id = $('#level_id').val();
                     }
                 },
                 columns: [
@@ -98,7 +98,7 @@
                           });
                           $('#level_id').on('change', function(){
                             dataUser.ajax.reload();
-                          })
+                          });
                       });
     </script>
 @endpush
