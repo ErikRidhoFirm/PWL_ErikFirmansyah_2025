@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\LevelModel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -265,5 +267,22 @@ public function list(Request $request)
         })
         ->rawColumns(['aksi']) // memberitahu bahwa kolom aksi adalah html
         ->make(true);
+}
+// pratikkum 3 no-8
+// Menampilkan halama form tambah user 
+public function create(){
+    $breadcrumb = (object)[
+        'title' => 'Tambah User',
+        'list' => ['Home', 'User', 'Tambah']
+    ];
+
+    $page = (object)[
+        'title' => 'Tambah user baru'
+    ];
+
+    $level = LevelModel::all(); // ambil data level untuk ditampilkan di form
+    $activeMenu = 'user'; // set menu ysng sedang aktif
+
+    return view('user.create', ['breadcrumb' => $breadcrumb, 'page' => $page, 'level', 'activeMenu' => $activeMenu]);
 }
 }
