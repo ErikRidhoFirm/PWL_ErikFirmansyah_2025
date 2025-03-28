@@ -307,4 +307,22 @@ public function store(Request $request)
 
     return redirect('/user')-> with('succes', 'Data user berhasil disimpan');
 }
+
+// praktikkum 3 no 14
+// menampilkan detail
+public function show(string $id)
+{
+$user = UserModel::with('level')->find($id);
+
+$breadcrumb = (object)[
+    'title' => 'Detail User',
+    'list' => ['Home', 'User', 'Detail']
+];
+$page = (object)[
+    'title' => 'Detail user'
+    ];
+    $activeMenu = 'user';   // set menu yang aktif
+
+    return view('user.show', ['breadcrumb' => $breadcrumb, 'page' => $page, 'user' => $user, 'activeMenu' => $activeMenu]);
+}
 }
