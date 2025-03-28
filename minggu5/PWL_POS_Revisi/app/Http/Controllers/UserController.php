@@ -270,11 +270,38 @@ class UserController extends Controller
 
     // pratikkum 3 no-7 
     // Ambil data user dalam bentuk json untuk datatables
+// public function list(Request $request)
+// {
+//     $users = UserModel::select('user_id', 'username', 'nama', 'level_id')
+//         ->with('level');
+
+//     return DataTables::of($users)
+//         // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)
+//         ->addIndexColumn()
+//         ->addColumn('aksi', function ($user) { // menambahkan kolom aksi
+//             $btn = '<a href="' . url('/user/' . $user->user_id) . '" class="btn btn-info btn-sm">Detail</a> ';
+//             $btn .= '<a href="' . url('/user/' . $user->user_id . '/edit') . '" class="btn btn-warning btn-sm">Edit</a> ';
+//             $btn .= '<form class="d-inline-block" method="POST" action="' . url('/user/' . $user->user_id) . '">'
+//                 . csrf_field() . method_field('DELETE') .
+//                 '<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');">Hapus</button></form>';
+//             return $btn;
+//         })
+//         ->rawColumns(['aksi']) // memberitahu bahwa kolom aksi adalah html
+//         ->make(true);
+// }
+
+//praktikkum 4 no 5
+//Ambil data user dalam bentuk json untuk datatables
 public function list(Request $request)
 {
     $users = UserModel::select('user_id', 'username', 'nama', 'level_id')
         ->with('level');
 
+        //filter data user berdasarkan level_id
+        if ($request->level_id) {
+            $users->where('level_id', $request->level_id);
+        }
+        
     return DataTables::of($users)
         // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)
         ->addIndexColumn()
