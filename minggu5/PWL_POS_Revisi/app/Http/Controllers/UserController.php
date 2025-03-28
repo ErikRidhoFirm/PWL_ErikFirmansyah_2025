@@ -254,7 +254,7 @@ class UserController extends Controller
     {
         $breadcrumb = (object)[
             'title' => 'Daftar User',
-            'list' =>['Home', 'User']
+            'list'  => ['Home', 'User']
         ];
 
         $page = (object)[
@@ -301,7 +301,6 @@ public function list(Request $request)
         if ($request->level_id) {
             $users->where('level_id', $request->level_id);
         }
-        
     return DataTables::of($users)
         // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)
         ->addIndexColumn()
