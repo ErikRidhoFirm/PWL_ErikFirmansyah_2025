@@ -283,7 +283,7 @@ public function create(){
     $level = LevelModel::all(); // ambil data level untuk ditampilkan di form
     $activeMenu = 'user'; // set menu ysng sedang aktif
 
-    return view('user.create', ['breadcrumb' => $breadcrumb, 'page' => $page, 'level', 'activeMenu' => $activeMenu]);
+    return view('user.create', ['breadcrumb' => $breadcrumb, 'page' => $page, 'level' => $level, 'activeMenu' => $activeMenu]);
 }
 
 // praktikkum 3 no-11
