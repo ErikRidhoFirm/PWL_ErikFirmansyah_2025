@@ -96,6 +96,9 @@
                                   }
                               ]
                           });
+                          $('#level_id').on('change', function(){
+                            dataUser.ajax.reload();
+                          })
                       });
     </script>
 @endpush
