@@ -285,4 +285,25 @@ public function create(){
 
     return view('user.create', ['breadcrumb' => $breadcrumb, 'page' => $page, 'level', 'activeMenu' => $activeMenu]);
 }
+
+// menyimpan data user baru 
+public function store(Request $request)
+{
+    $request->validate([
+        // usernma harus diisi, berupa string, minimal 3 karakter dan bernilai ditabel m_user kolom username
+        'username' => 'required|string|min:3|unique:m_user,username',
+        'nama'     => 'required|string|max:100', // nama harus diisi, berupa string, dan maksimak 100 karakter
+        'password' => 'required|min:5',          // password harus diisi dan minimal 5 karakter
+        'level_id' => 'required|integer'         // level_id harus diisi dan berupa angka
+    ]);
+
+    UserModel::create([
+        'username'  => $request->username,
+        'nama'      => $request->nama,
+        'password'  => bcrypt($request->password),  // password dienskripsi sebelum disimpan
+        'level_id'  => $request->level_id,
+    ]);
+
+    return redirect('/user')-> with('succes', 'Data user berhasil disimpan');
+}
 }
