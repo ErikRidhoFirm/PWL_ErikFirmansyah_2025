@@ -5,7 +5,7 @@
         <div class="card-header">
             <h3 class="card-title">{{ $page->title }}</h3>
             <div class="card-tools">
-                <a class="btn btn-sm btn-primary mt-1" href="{{ url('supplier/create') }}"> Tambah </a>
+                <a class="btn btn-sm btn-primary mt-1" href="{{ url('level/create') }}"> Tambah </a>
             </div>
         </div>
         <div class="card-body">
@@ -15,13 +15,12 @@
             @if (session('error'))
                 <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
-            <table class="table table-bordered table-striped table-hover table-sm" id="table_supplier">
+            <table class="table table-bordered table-striped table-hover table-sm" id="table_level">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Kode Supplier</th>
-                        <th>Nama Supplier</th>
-                        <th>Alamat Supplier</th>
+                        <th>Level ID</th>
+                        <th>Level Kode</th>
+                        <th>Level Nama</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -36,40 +35,35 @@
 @push('js')
     <script>
         $(document).ready(function() {
-            var dataSupplier = $('#table_supplier').DataTable({
+            var dataLevel = $('#table_level').DataTable({
                 // serverSide : true , jika ingin menggunakan server side processing
                 serverSide: true,
                 ajax: {
-                    "url": "{{ url('supplier/list') }}",
+                    "url": "{{ url('level/list') }}",
                     "dataType": "json",
                     "type": "POST",
                 },
                 columns: [
                     {
                         // nomor urut dari laravel datatable addIndexColumn ()
-                                      data: "DT_RowIndex",
+                        data: "DT_RowIndex",
                                       className: "text-center",
                                       orderable: false,
                                       searchable: false
                                   }, {
-                                      data: "supplier_kode",
+                                      data: "level_kode",
                                       className: "",
                                       // orderable : true , jika ingin kolom ini bisa diurutkan
                                       orderable: true,
                                       // searchable : true , jika ingin kolom ini bisa dicari
                                       searchable: true
                                   }, {
-                                      data: "supplier_nama",
+                                      data: "level_nama",
                                       className: "",
                                       orderable: true,
                                       searchable: true
-                                  }, {
-                                      // mengambil data level hasil dari ORM berelasi
-                                      data: "supplier_alamat",
-                                      className: "",
-                                      orderable: false,
-                                      searchable: false
-                                  }, {
+                                  }, 
+                                   {
                                       data: "aksi",
                                       className: "",
                                       orderable: false,
