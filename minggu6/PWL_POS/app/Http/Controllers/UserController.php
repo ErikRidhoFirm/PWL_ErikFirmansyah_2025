@@ -479,6 +479,7 @@ public function store_ajax(Request $request)
     redirect('/');
 }
 
+// prak-2 no-2
 public function list(Request $request)
 {
     $users = UserModel::select('user_id', 'username', 'nama', 'level_id')
@@ -511,4 +512,14 @@ public function list(Request $request)
         ->rawColumns(['aksi']) // memberitahu bahwa kolom aksi adalah HTML
         ->make(true);
     }
+
+// prak-2 no-4
+// menampilkan halaman form edit user ajax
+public function edit_ajax(string $id)
+{
+    $user = UserModel::find($id);
+    $level = LevelModel::select('level_id', 'level_nama')->get();
+
+    return view('user.edit_ajax', ['user' => $user, 'level' => $level]);
+}
 }
