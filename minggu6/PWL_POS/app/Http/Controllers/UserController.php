@@ -559,4 +559,11 @@ public function update_ajax(Request $request, $id){
     }
     return redirect('/');
 }
+
+// prak-3 no-3
+public function confirm_ajax(string $id){
+    $user = UserModel::find($id);
+
+    return view('user.confirm_ajax', ['user' => $user]);
+}
 }
