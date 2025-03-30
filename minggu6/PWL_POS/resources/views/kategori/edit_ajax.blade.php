@@ -41,7 +41,7 @@
                  </div>
              </div>
              <div class="modal-footer">
-                 <button type="button" data-dismiss="modal" class="btn btnwarning">Batal</button>
+                 <button type="button" data-dismiss="modal" class="btn btn-warning">Batal</button>
                  <button type="submit" class="btn btn-primary">Simpan</button>
              </div>
          </div>
@@ -60,11 +60,6 @@
                     required: true,
                     minlength: 3,
                     maxlength: 100
-                },
-                deskripsi: {
-                    required: true,
-                    minlength: 3,
-                    maxlength: 200
                 },
             },
              submitHandler: function(form) {
