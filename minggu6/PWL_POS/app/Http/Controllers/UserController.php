@@ -434,4 +434,13 @@ public function destroy(string $id)
         return redirect('/user')->with('error', 'Data gagal dihapus karena masuh terdapat tabel lain yang terkait dengan data ini');
     }
 }
+
+// Jobsheet 6 prak-1 no-7
+public function create_ajax()
+{
+    $level = LevelModel::select('level_id', 'level_nama')->get();
+
+    return view('user.create_ajax')
+                ->with('level', $level);
+}
 }
