@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
@@ -199,3 +200,16 @@ Route::group(['prefix' => 'barang'], function() {
 //     Route::put('/{id}', [BarangController::class, 'update']);     //menyimpan perubahan data barang
 //     Route::delete('/{id}', [BarangController::class, 'destroy']); //menghapus data barang
 // });
+
+// ============ Jobsheet 7 ==============
+Route::pattern('id', '[0-9]+');     // artinya ketika ada parameter (id), maka harus berupa angka
+
+Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::post('login', [AuthController::class, 'postLogin']);
+Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
+
+Route::middleware(['auth'])->group(function(){  // artinya semua route didalam group ini harus login dulu
+    
+    // masukkan semua route yang perlu autentikasi di sini
+
+});
