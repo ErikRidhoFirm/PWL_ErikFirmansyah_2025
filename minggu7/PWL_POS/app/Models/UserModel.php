@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Monolog\Level;
 
 class UserModel extends Model
 {
@@ -24,10 +25,26 @@ class UserModel extends Model
 
     // protected $fillable = ['level_id', 'username', 'nama']; //pada praktikum 2.1 terdapat error dibagian ini yang akan berpengaruh pada UserController, 
                                                             //jadi diberikan solusi pada variable fillable, dengan menambahkan 'password' didalamnya.
-    protected $fillable = ['level_id', 'username', 'nama', 'password'];
+    // protected $fillable = ['level_id', 'username', 'nama', 'password'];
 
     //praktikkm 2.7 no. 1
-    public function level(): BelongsTo
+    // public function level(): BelongsTo
+    // {
+    //     return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
+    // }
+
+
+    // ========= Jobsheet 5 =================
+    protected $fillable = ['level_id', 'username', 'nama', 'password', 'created_at', 'updated_at'];
+
+    protected $hidden   = ['password'];  // jangan ditampilkan saat select
+
+    protected $casts    = ['password' => 'hashed'];  // casting password agar otomatis di hash
+
+    /**
+     * relasi ke tabel level
+     */
+    public function level(): BelongTo
     {
         return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
     }
