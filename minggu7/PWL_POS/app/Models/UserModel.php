@@ -44,7 +44,7 @@ class UserModel extends Model
     /**
      * relasi ke tabel level
      */
-    public function level(): BelongTo
+    public function level(): BelongsTo
     {
         return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
     }
