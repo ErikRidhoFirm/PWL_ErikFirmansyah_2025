@@ -733,6 +733,16 @@
                     <p>Transaksi Penjualan</p>
                 </a>
             </li>
+
+            {{-- Tugas prak-1 Jobsheet-7 --}}
+            {{-- memberikan kode untuk sidebar pada logout agar bisa ditekan dan mengarahkan ke arah form logout --}}
+            <li class="nav-header">Tindakan</li>    
+            <li class="nav-item">
+              <a href="{{ url('/logout') }}" class="nav-link {{ ($activeMenu == 'logout') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-angle-left"></i>
+                  <p>Logout</p>
+              </a>
+          </li>
         </ul>
     </nav>
 </div>
