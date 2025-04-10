@@ -212,16 +212,16 @@ Route::middleware(['auth'])->group(function(){  // artinya semua route didalam g
     
     Route::get('/', [WelcomeController::class, 'index']);
 
-    // // artinya semua route didalam group ini harus punya role ADM (Administrator)
-    // Route::middleware(['authorize:ADM'])->group(function(){
-    //     Route::get('/level', [LevelController::class, 'index']);        
-    //     Route::post('/level/list', [LevelController::class, 'list']);        // untuk list json datatables 
-    //     Route::get('/level/create', [LevelController::class, 'create']);    
-    //     Route::post('/level', [LevelController::class, 'store']);        
-    //     Route::get('/level/{id}/edit', [LevelController::class, 'edit']);   // untuk tampilkan form edit  
-    //     Route::put('/level/{id}', [LevelController::class, 'update']);      // untuk proses update data
-    //     Route::delete('/level/{id}', [LevelController::class, 'destroy']);      // untuk proses hapus data
-    // });
+    // artinya semua route didalam group ini harus punya role ADM (Administrator)
+    Route::middleware(['authorize:ADM'])->group(function(){
+        Route::get('/level', [LevelController::class, 'index']);        
+        Route::post('/level/list', [LevelController::class, 'list']);        // untuk list json datatables 
+        Route::get('/level/create', [LevelController::class, 'create']);    
+        Route::post('/level', [LevelController::class, 'store']);        
+        Route::get('/level/{id}/edit', [LevelController::class, 'edit']);   // untuk tampilkan form edit  
+        Route::put('/level/{id}', [LevelController::class, 'update']);      // untuk proses update data
+        Route::delete('/level/{id}', [LevelController::class, 'destroy']);      // untuk proses hapus data
+    });
 
         // ======= Jobsheet 7 prak-3 no-3 =======
         // artinya semua route didalam group ini harus punya role ADM (Administrator) dan MNG (Manager)
@@ -271,23 +271,5 @@ Route::group(['prefix' => 'kategori'], function() {
     Route::get('/{id}/delete_ajax', [KategoriController::class, 'confirm_ajax']);     //untuk tampilkan form confirm delete user ajax
     Route::delete('/{id}/delete_ajax', [KategoriController::class, 'delete_ajax']);     //untuk hapus data user ajax
     Route::delete('/{id}', [KategoriController::class, 'destroy']); //menghapus data user
-});
-
-// route barang
-Route::group(['prefix' => 'barang'], function() {
-    Route::get('/', [BarangController::class, 'index']);          //menampilkan halaman awal user
-    Route::post('/list', [BarangController::class, 'list']);      //menampilkan data user dalam bentuk json untuk datatables
-    Route::get('/create', [BarangController::class, 'create']);   //menampilkan halaman form tambah user
-    Route::post('/', [BarangController::class, 'store']);         //menyimpan data user baru
-    Route::get('/create_ajax', [BarangController::class, 'create_ajax']);     //Menampilkan halaman form tambah user ajax
-    Route::post('/ajax', [BarangController::class, 'store_ajax']);     //Menyimpan datauser baru ajax
-    Route::get('/{id}', [BarangController::class, 'show']);       //menampilkan detail user
-    Route::get('/{id}/edit', [BarangController::class, 'edit']);  //menamilkan halaman form edit user
-    Route::put('/{id}', [BarangController::class, 'update']);     //menyimpan perubahan data user
-    Route::get('/{id}/edit_ajax', [BarangController::class, 'edit_ajax']);     //menampilkan halaman form edit user ajax
-    Route::put('/{id}/update_ajax', [BarangController::class, 'update_ajax']);     //menyimpan perubahan data user ajax
-    Route::get('/{id}/delete_ajax', [BarangController::class, 'confirm_ajax']);     //untuk tampilkan form confirm delete user ajax
-    Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']);     //untuk hapus data user ajax
-    Route::delete('/{id}', [BarangController::class, 'destroy']); //menghapus data user
 });
 });

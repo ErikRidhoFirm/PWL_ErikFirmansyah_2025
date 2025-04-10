@@ -70,7 +70,9 @@ class UserModel extends Authenticatable
 
 
     // ========= Jobsheet 7 prak-3 no-1 ============
-
+    /**
+     * mendapatkan kode role
+     */
     public function getRole()
     {
         return $this->level->level_kode;
