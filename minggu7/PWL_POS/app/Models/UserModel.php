@@ -50,7 +50,7 @@ class UserModel extends Authenticatable
         return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
     }
 
-    // ========= Jobsheet 7 prak-2 no-1
+    // ========= Jobsheet 7 prak-2 no-1 ============
 
     /**
      * mendapatkan nama role
@@ -66,5 +66,13 @@ class UserModel extends Authenticatable
     public function hasRole($role): bool
     {
         return $this->level->level_kode == $role;
+    }
+
+
+    // ========= Jobsheet 7 prak-3 no-1 ============
+
+    public function getRole()
+    {
+        return $this->level->level_kode;
     }
 }
