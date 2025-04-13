@@ -324,3 +324,4 @@ Route::prefix('user') -> middleware(['authorize:ADM'])->group(function(){
     Route::delete('/{id}', [UserController::class, 'destroy']); //menghapus data user
 });
 });
+// tes
