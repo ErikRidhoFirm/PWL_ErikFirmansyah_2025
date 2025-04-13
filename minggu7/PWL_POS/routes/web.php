@@ -208,10 +208,13 @@ Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'postlogin']);
 Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 
+// =========== Jobsheet 7 Tugas No. 1 ===========
+Route::get('register', [AuthController::class, 'register'])->name('register');
+Route::post('register', [AuthController::class, 'postRegister']);
+
 Route::middleware(['auth'])->group(function(){  // artinya semua route didalam group ini harus login dulu
     
     Route::get('/', [WelcomeController::class, 'index']);
-
 
     // Route::middleware(['authorize:ADM'])->group(function(){
     // ======== Jobsheet 7 tugas 4 ======== 

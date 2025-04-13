@@ -63,6 +63,15 @@
                         </div>
                     </div>
                 </form>
+                {{-- Jobsheet 7 Tugas No 1 --}}
+                 <div class="mt-3 text-center">
+                    <p>
+                      Belum punya akun ? 
+                      <a href="{{ route('register') }}">
+                        Daftar sekarang
+                      </a>
+                    </p>
+                  </div>
             </div>
         </div>
     </div>
@@ -93,7 +102,7 @@
         $(document).ready(function() {
             $("#form-login").validate({
                 rules: {
-                    username: { required: true, minlength: 4, maxlength: 20 },
+                    username: { required: true, minlength: 3, maxlength: 20 },
                     password: { required: true, minlength: 5, maxlength: 20 }
                 },
                 submitHandler: function(form) {
