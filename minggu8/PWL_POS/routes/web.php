@@ -7,6 +7,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
+use App\Models\KategoriModel;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Controller;
 /*
@@ -352,3 +353,15 @@ Route::get('/level/{id}/delete_ajax', [LevelController::class, 'confirm_ajax']);
 Route::delete('/level/{id}/delete_ajax', [LevelController::class, 'delete_ajax']); // ajax delete
 Route::get('/level/import', [LevelController::class, 'import']); // ajax form upload excel
 Route::post('/level/import_ajax', [LevelController::class, 'import_ajax']); // ajax import excel
+
+// route kategori
+Route::get('/kategori', [KategoriController::class, 'index']);
+Route::post('/kategori/list', [KategoriController::class, 'list']);
+Route::get('/kategori/create_ajax', [KategoriController::class, 'create_ajax']); // ajax form create
+Route::post('/kategori_ajax', [KategoriController::class, 'store_ajax']); // ajax store
+Route::get('/kategori/{id}/edit_ajax', [KategoriController::class, 'edit_ajax']); // ajax form edit
+Route::put('/kategori/{id}/update_ajax', [KategoriController::class, 'update_ajax']); // ajax update
+Route::get('/kategori/{id}/delete_ajax', [KategoriController::class, 'confirm_ajax']); // ajax form confirm
+Route::delete('/kategori/{id}/delete_ajax', [KategoriController::class, 'delete_ajax']); // ajax delete
+Route::get('/kategori/import', [KategoriController::class, 'import']); // ajax form upload excel
+Route::post('/kategori/import_ajax', [KategoriController::class, 'import_ajax']); // ajax import excel
