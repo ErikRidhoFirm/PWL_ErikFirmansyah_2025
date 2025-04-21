@@ -423,5 +423,18 @@ class BarangController extends Controller
         $sheet->setCellValue('F1', 'Kategori');
 
         $sheet->getStyle('A1:F1')->getFont()->setBold(true);    // bold header
+        // ===== Jobsheet 8 prak-2 no-6 =====
+        $no = 1;    // nomor data dimulai dari 1
+        $baris = 2;     // baris data dimulai dari baris ke 2
+        foreach ($barang as $key => $value) {
+            $sheet->setCellvalue('A' . $baris, $no);
+            $sheet->setCellvalue('B' . $baris, $value->barang_kode);
+            $sheet->setCellvalue('C' . $baris, $value->barang_nama);
+            $sheet->setCellvalue('D' . $baris, $value->harga_beli);
+            $sheet->setCellvalue('E' . $baris, $value->harga_jual);
+            $sheet->setCellvalue('F' . $baris, $value->kategori->kategori_nama);  // ambil nama kategori
+            $baris++;
+            $no++;
+        }
     }
 }
