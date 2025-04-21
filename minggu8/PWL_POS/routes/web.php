@@ -377,3 +377,15 @@ Route::get('/supplier/{id}/delete_ajax', [SupplierController::class, 'confirm_aj
 Route::delete('/supplier/{id}/delete_ajax', [SupplierController::class, 'delete_ajax']); // ajax delete
 Route::get('/supplier/import', [SupplierController::class, 'import']); // ajax form upload excel
 Route::post('/supplier/import_ajax', [SupplierController::class, 'import_ajax']); // ajax import excel
+
+// route user
+Route::get('/user', [UserController::class, 'index']);
+Route::post('/user/list', [UserController::class, 'list']);
+Route::get('/user/create_ajax', [UserController::class, 'create_ajax']); // ajax form create
+Route::post('/user_ajax', [UserController::class, 'store_ajax']); // ajax store
+Route::get('/user/{id}/edit_ajax', [UserController::class, 'edit_ajax']); // ajax form edit
+Route::put('/user/{id}/update_ajax', [UserController::class, 'update_ajax']); // ajax update
+Route::get('/user/{id}/delete_ajax', [UserController::class, 'confirm_ajax']); // ajax form confirm
+Route::delete('/user/{id}/delete_ajax', [UserController::class, 'delete_ajax']); // ajax delete
+Route::get('/user/import', [UserController::class, 'import']); // ajax form upload excel
+Route::post('/user/import_ajax', [UserController::class, 'import_ajax']); // ajax import excel
