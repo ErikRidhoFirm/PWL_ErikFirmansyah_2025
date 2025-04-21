@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class BarangController extends Controller
 {
@@ -399,5 +400,15 @@ class BarangController extends Controller
             }
         }
         return redirect('/');
+    }
+
+    // ===== Jobsheet 8 prak-2 no-4 =====
+    public function export_excel()
+    {
+        // ambil data barang yang akan di export
+        $barang = BarangModel::select('kategori_id', 'barang_kode', 'barang_nama', 'harga_beli', 'harga_jual')
+            ->orderBy('kategori_id')
+            ->with('kategori')
+            ->get();
     }
 }
