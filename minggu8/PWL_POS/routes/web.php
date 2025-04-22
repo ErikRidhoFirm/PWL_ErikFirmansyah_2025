@@ -355,6 +355,8 @@ Route::get('/level/{id}/delete_ajax', [LevelController::class, 'confirm_ajax']);
 Route::delete('/level/{id}/delete_ajax', [LevelController::class, 'delete_ajax']); // ajax delete
 Route::get('/level/import', [LevelController::class, 'import']); // ajax form upload excel
 Route::post('/level/import_ajax', [LevelController::class, 'import_ajax']); // ajax import excel
+// ===== Jobsheet 8 Tugas 2=====
+Route::get('/level/export_excel', [LevelController::class, 'export_excel']); // export excel
 
 // route kategori
 Route::get('/kategori', [KategoriController::class, 'index']);
