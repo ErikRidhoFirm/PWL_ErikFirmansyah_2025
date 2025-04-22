@@ -128,6 +128,8 @@
         <div class="card-header">
             <h3 class="card-title">Daftar barang</h3>
             <div class="card-tools">
+                {{-- Jobsheet 8 prak-3 no-2 --}}
+                <a href="{{ url('/barang/export_pdf') }}" class="btn btn-warning btn-sm mt-1"><i class="fa fa-file-excel"></i> Export Barang</a>
                 <button onclick="modalAction('{{ url('/barang/import') }}')" class="btn btn-info">Import Barang</button>
                 {{-- <a href="{{ url('/barang/create') }}" class="btn btn-primary">Tambah Data</a> --}}
                 {{-- Jobsheet 8 prak-2 no-1 --}}
