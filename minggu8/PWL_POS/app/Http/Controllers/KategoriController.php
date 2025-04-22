@@ -420,6 +420,6 @@ class KategoriController extends Controller
         $pdf->setOption("isRemoteEnabled", true);   // set true jika ada gambar dari url
         $pdf->render();
 
-        return $pdf->stream('Data Barang '.date('Y-m-d H-i-s').'.pdf');
+        return $pdf->stream('Data Kategori '.date('Y-m-d H-i-s').'.pdf');
     }
 }

@@ -93,6 +93,8 @@
         <div class="card-header">
             <h3 class="card-title">Daftar Level</h3>
             <div class="card-tools">
+                {{-- Jobsheet 8 Tugas-3 --}}
+             <a href="{{ url('/level/export_pdf') }}" class="btn btn-warning btn-sm mt-1"><i class="fa fa-file-excel"></i> Export Level</a>
                 <button onclick="modalAction('{{ url('/level/import') }}')" class="btn btn-info">Import Level</button>
                 {{-- <a href="{{ url('/level/create') }}" class="btn btn-primary">Tambah Data</a> --}}
                 {{-- Jobsheet 8 Tugas 2 --}}

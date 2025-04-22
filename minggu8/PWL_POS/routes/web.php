@@ -343,7 +343,7 @@ Route::get('/barang/import', [BarangController::class, 'import']); // ajax form 
 Route::post('/barang/import_ajax', [BarangController::class, 'import_ajax']); // ajax import excel
 // ===== Jobsheet 8 prak-2 no-2 =====
 Route::get('/barang/export_excel', [BarangController::class, 'export_excel']); // export excel
-// ===== Jobsheet 8 prak-2 no-2 =====
+// ===== Jobsheet 8 prak-3 no-3 =====
 Route::get('/barang/export_pdf', [BarangController::class, 'export_pdf']); // export pdf
 
 // route level 
@@ -359,6 +359,8 @@ Route::get('/level/import', [LevelController::class, 'import']); // ajax form up
 Route::post('/level/import_ajax', [LevelController::class, 'import_ajax']); // ajax import excel
 // ===== Jobsheet 8 Tugas 2=====
 Route::get('/level/export_excel', [LevelController::class, 'export_excel']); // export excel
+// ===== Jobsheet 8 Tugas 3=====
+Route::get('/level/export_pdf', [LevelController::class, 'export_pdf']); // export pdf
 
 // route kategori
 Route::get('/kategori', [KategoriController::class, 'index']);
@@ -373,7 +375,7 @@ Route::get('/kategori/import', [KategoriController::class, 'import']); // ajax f
 Route::post('/kategori/import_ajax', [KategoriController::class, 'import_ajax']); // ajax import excel
 // ===== Jobsheet 8 Tugas 2=====
 Route::get('/kategori/export_excel', [KategoriController::class, 'export_excel']); // export excel
-// ===== Jobsheet 8 prak-2 no-2 =====
+// ===== Jobsheet 8 Tugas 3=====
 Route::get('/kategori/export_pdf', [KategoriController::class, 'export_pdf']); // export pdf
 
 // route supplier
