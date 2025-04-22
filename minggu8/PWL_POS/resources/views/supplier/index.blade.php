@@ -143,6 +143,8 @@
         <div class="card-header">
             <h3 class="card-title">Daftar Supplier</h3>
             <div class="card-tools">
+            {{-- Jobsheet 8 Tugas-3 --}}
+             <a href="{{ url('/supplier/export_pdf') }}" class="btn btn-warning btn-sm mt-1"><i class="fa fa-file-excel"></i> Export Supplier</a>
                 <button onclick="modalAction('{{ url('/supplier/import') }}')" class="btn btn-info btn-sm mt-1">Import Supplier</button>
                 {{-- <a class="btn btn-sm btn-primary mt-1" href="{{ url('supplier/create') }}"> Tambah </a> --}}
                 {{-- Jobsheet 8 Tugas 2 --}}

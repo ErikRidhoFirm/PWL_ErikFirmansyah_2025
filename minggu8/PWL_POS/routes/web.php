@@ -391,6 +391,9 @@ Route::get('/supplier/import', [SupplierController::class, 'import']); // ajax f
 Route::post('/supplier/import_ajax', [SupplierController::class, 'import_ajax']); // ajax import excel
 // ===== Jobsheet 8 Tugas 2=====
 Route::get('/supplier/export_excel', [SupplierController::class, 'export_excel']); // export excel
+// ===== Jobsheet 8 Tugas 3=====
+Route::get('/supplier/export_pdf', [SupplierController::class, 'export_pdf']); // export pdf
+
 
 // route user
 Route::get('/user', [UserController::class, 'index']);
