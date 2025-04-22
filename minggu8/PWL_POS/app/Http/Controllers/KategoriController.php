@@ -360,4 +360,50 @@ class KategoriController extends Controller
         }
         return redirect('/');
     }
+
+    // ===== Jobsheet 8 Tugas 2 =====
+    public function export_excel()
+    {
+        // ambil data barang yang akan di export
+        $kategori = KategoriModel::select('kategori_id', 'kategori_kode', 'kategori_nama')
+            ->orderBy('kategori_id')
+            ->get();
+        // load library excel
+        $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();        // ambil sheet yang aktif
+
+        $sheet->setCellValue('A1', 'No');
+        $sheet->setCellValue('B1', 'Kategori Kode');
+        $sheet->setCellValue('C1', 'Kategori Nama');
+
+        $sheet->getStyle('A1:C1')->getFont()->setBold(true);    // bold header
+        $no = 1;    // nomor data dimulai dari 1
+        $baris = 2;     // baris data dimulai dari baris ke 2
+        foreach ($kategori as $key => $value) {
+            $sheet->setCellvalue('A' . $baris, $no);
+            $sheet->setCellvalue('B' . $baris, $value->kategori_kode);
+            $sheet->setCellvalue('C' . $baris, $value->kategori_nama);
+            $baris++;
+            $no++;
+        }
+        foreach (range('A', 'C') as $columnID) {
+            $sheet->getColumnDimension($columnID)->setAutoSize(true);   // set auto size untuk kolom
+        }
+        $sheet->setTitle('Data Kategori'); // set title sheet
+
+        $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+        $filename = 'Data Kategori ' . date('Y-m-d H:i:s') . '.xlsx';
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+        header('Cache-Control: max-age=1');
+        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+        header('Cache-Control: cache, must-revalidate');
+        header('Pragma: public');
+
+        $writer->save('php://output');
+        exit;
+    } // end function export_excel
 }

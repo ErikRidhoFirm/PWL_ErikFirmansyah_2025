@@ -367,6 +367,8 @@ Route::get('/kategori/{id}/delete_ajax', [KategoriController::class, 'confirm_aj
 Route::delete('/kategori/{id}/delete_ajax', [KategoriController::class, 'delete_ajax']); // ajax delete
 Route::get('/kategori/import', [KategoriController::class, 'import']); // ajax form upload excel
 Route::post('/kategori/import_ajax', [KategoriController::class, 'import_ajax']); // ajax import excel
+// ===== Jobsheet 8 Tugas 2=====
+Route::get('/kategori/export_excel', [KategoriController::class, 'export_excel']); // export excel
 
 // route supplier
 Route::get('/supplier', [SupplierController::class, 'index']);
