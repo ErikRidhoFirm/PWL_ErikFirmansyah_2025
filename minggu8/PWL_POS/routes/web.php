@@ -383,6 +383,8 @@ Route::get('/supplier/{id}/delete_ajax', [SupplierController::class, 'confirm_aj
 Route::delete('/supplier/{id}/delete_ajax', [SupplierController::class, 'delete_ajax']); // ajax delete
 Route::get('/supplier/import', [SupplierController::class, 'import']); // ajax form upload excel
 Route::post('/supplier/import_ajax', [SupplierController::class, 'import_ajax']); // ajax import excel
+// ===== Jobsheet 8 Tugas 2=====
+Route::get('/supplier/export_excel', [SupplierController::class, 'export_excel']); // export excel
 
 // route user
 Route::get('/user', [UserController::class, 'index']);

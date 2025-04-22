@@ -374,4 +374,52 @@ class SupplierController extends Controller
         }
         return redirect('/');
     }
+
+    // ===== Jobsheet 8 Tugas 2 =====
+    public function export_excel()
+    {
+        // ambil data barang yang akan di export
+        $supplier = SupplierModel::select('supplier_id', 'supplier_kode', 'supplier_nama', 'supplier_alamat')
+            ->orderBy('supplier_id')
+            ->get();
+        // load library excel
+        $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();        // ambil sheet yang aktif
+
+        $sheet->setCellValue('A1', 'No');
+        $sheet->setCellValue('B1', 'Supplier Kode');
+        $sheet->setCellValue('C1', 'Supplier Nama');
+        $sheet->setCellValue('D1', 'Supplier Alamat');
+
+        $sheet->getStyle('A1:D1')->getFont()->setBold(true);    // bold header
+        $no = 1;    // nomor data dimulai dari 1
+        $baris = 2;     // baris data dimulai dari baris ke 2
+        foreach ($supplier as $key => $value) {
+            $sheet->setCellvalue('A' . $baris, $no);
+            $sheet->setCellvalue('B' . $baris, $value->supplier_kode);
+            $sheet->setCellvalue('C' . $baris, $value->supplier_nama);
+            $sheet->setCellvalue('D' . $baris, $value->supplier_alamat);
+            $baris++;
+            $no++;
+        }
+        foreach (range('A', 'D') as $columnID) {
+            $sheet->getColumnDimension($columnID)->setAutoSize(true);   // set auto size untuk kolom
+        }
+        $sheet->setTitle('Data Supplier'); // set title sheet
+
+        $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+        $filename = 'Data Supplier ' . date('Y-m-d H:i:s') . '.xlsx';
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+        header('Cache-Control: max-age=1');
+        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+        header('Cache-Control: cache, must-revalidate');
+        header('Pragma: public');
+
+        $writer->save('php://output');
+        exit;
+    } // end function export_excel
 }

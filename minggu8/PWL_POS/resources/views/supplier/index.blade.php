@@ -144,7 +144,9 @@
             <h3 class="card-title">Daftar Supplier</h3>
             <div class="card-tools">
                 <button onclick="modalAction('{{ url('/supplier/import') }}')" class="btn btn-info btn-sm mt-1">Import Supplier</button>
-                <a class="btn btn-sm btn-primary mt-1" href="{{ url('supplier/create') }}"> Tambah </a>
+                {{-- <a class="btn btn-sm btn-primary mt-1" href="{{ url('supplier/create') }}"> Tambah </a> --}}
+                {{-- Jobsheet 8 Tugas 2 --}}
+            <a href="{{ url('/supplier/export_excel') }}" class="btn btn-primary btn-sm mt-1"><i class="fa fa-file-excel"></i> Export Supplier</a>
                 <button onclick="modalAction('{{ url('/supplier/create_ajax') }}')" class="btn btn-sm btn-success mt-1">Tambah
                     Ajax</button>
             </div>
