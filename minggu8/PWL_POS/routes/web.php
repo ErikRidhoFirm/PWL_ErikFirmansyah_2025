@@ -408,3 +408,5 @@ Route::get('/user/import', [UserController::class, 'import']); // ajax form uplo
 Route::post('/user/import_ajax', [UserController::class, 'import_ajax']); // ajax import excel
 // ===== Jobsheet 8 Tugas 2=====
 Route::get('/user/export_excel', [UserController::class, 'export_excel']); // export excel
+// ===== Jobsheet 8 Tugas 3=====
+Route::get('/user/export_pdf', [UserController::class, 'export_pdf']); // export pdf

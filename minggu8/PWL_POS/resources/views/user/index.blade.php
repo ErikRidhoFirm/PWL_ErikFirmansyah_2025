@@ -173,6 +173,8 @@
         <div class="card-header">
             <h3 class="card-title">Daftar User</h3>
             <div class="card-tools">
+                {{-- Jobsheet 8 Tugas-3 --}}
+             <a href="{{ url('/user/export_pdf') }}" class="btn btn-warning btn-sm mt-1"><i class="fa fa-file-excel"></i> Export User</a>
                 <button onclick="modalAction('{{ url('/user/import') }}')" class="btn btn-sm btn-info mt-1">Import
                     User</button>
                 {{-- <a class="btn btn-sm btn-primary mt-1" href="{{ url('user/create') }}"> Tambah </a> --}}
