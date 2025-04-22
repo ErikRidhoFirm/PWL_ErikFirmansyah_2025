@@ -397,3 +397,5 @@ Route::get('/user/{id}/delete_ajax', [UserController::class, 'confirm_ajax']); /
 Route::delete('/user/{id}/delete_ajax', [UserController::class, 'delete_ajax']); // ajax delete
 Route::get('/user/import', [UserController::class, 'import']); // ajax form upload excel
 Route::post('/user/import_ajax', [UserController::class, 'import_ajax']); // ajax import excel
+// ===== Jobsheet 8 Tugas 2=====
+Route::get('/user/export_excel', [UserController::class, 'export_excel']); // export excel

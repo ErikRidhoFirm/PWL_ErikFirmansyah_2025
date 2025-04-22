@@ -545,7 +545,7 @@ class UserController extends Controller
 
                 // ======== Jobsheet 8 Tugsd 1 ========
                 'level_id' => ['required', 'integer'],
-                'username' => ['required', 'string', 'min:3', 'unique:m_user,username,' .$id. ',user_id'],
+                'username' => ['required', 'string', 'min:3', 'unique:m_user,username,' . $id . ',user_id'],
                 'nama'     => ['required', 'string', 'max:100'],
                 'password' => ['required', 'min:6'],
             ];
@@ -612,11 +612,13 @@ class UserController extends Controller
     }
 
     // ======== Jobsheet 8 Tugas 1 =======
-    public function import() {
+    public function import()
+    {
         return view('user.import');
     }
 
-    public function import_ajax(Request $request) {
+    public function import_ajax(Request $request)
+    {
         if ($request->ajax() || $request->wantsJson()) {
             $rules = [
                 //validasi file harus xls atau xlsx, max 1MB
@@ -669,9 +671,60 @@ class UserController extends Controller
                     'status' => false,
                     'message' => 'Tidak ada data yang diimport'
                 ]);
-            } 
+            }
         }
 
         return redirect('/');
-    } 
+    }
+
+    // ===== Jobsheet 8 Tugas 2 =====
+    public function export_excel()
+    {
+        // ambil data barang yang akan di export
+        $user = UserModel::select('level_id', 'username', 'nama', 'password')
+            ->orderBy('level_id')
+            ->with('level')
+            ->get();
+        // load library excel
+        $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();        // ambil sheet yang aktif
+
+        $sheet->setCellValue('A1', 'No');
+        $sheet->setCellValue('B1', 'Level ID');
+        $sheet->setCellValue('C1', 'Username');
+        $sheet->setCellValue('D1', 'Nama');
+        $sheet->setCellValue('E1', 'Password');
+
+        $sheet->getStyle('A1:E1')->getFont()->setBold(true);    // bold header
+        $no = 1;    // nomor data dimulai dari 1
+        $baris = 2;     // baris data dimulai dari baris ke 2
+        foreach ($user as $key => $value) {
+            $sheet->setCellvalue('A' . $baris, $no);
+            $sheet->setCellvalue('B' . $baris, $value->level_id);
+            $sheet->setCellvalue('C' . $baris, $value->username);
+            $sheet->setCellvalue('D' . $baris, $value->nama);
+            $sheet->setCellvalue('E' . $baris, $value->password);
+            $baris++;
+            $no++;
+        }
+        foreach (range('A', 'E') as $columnID) {
+            $sheet->getColumnDimension($columnID)->setAutoSize(true);   // set auto size untuk kolom
+        }
+        $sheet->setTitle('Data User'); // set title sheet
+
+        $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+        $filename = 'Data User ' . date('Y-m-d H:i:s') . '.xlsx';
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+        header('Cache-Control: max-age=1');
+        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
+        header('Cache-Control: cache, must-revalidate');
+        header('Pragma: public');
+
+        $writer->save('php://output');
+        exit;
+    } // end function export_excel
 }
