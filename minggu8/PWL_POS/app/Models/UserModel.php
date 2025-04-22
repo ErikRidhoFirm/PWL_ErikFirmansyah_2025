@@ -36,7 +36,7 @@ class UserModel extends Authenticatable
 
 
     // ========= Jobsheet 7 =================
-    protected $fillable = ['level_id', 'username', 'nama', 'password', 'created_at', 'updated_at'];
+    protected $fillable = ['username', 'password', 'nama', 'level_id', 'profile_photo', 'created_at', 'updated_at'];
 
     protected $hidden   = ['password'];  // jangan ditampilkan saat select
 

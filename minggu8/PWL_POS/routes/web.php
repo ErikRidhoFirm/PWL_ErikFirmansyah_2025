@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
@@ -216,6 +217,12 @@ Route::post('register', [AuthController::class, 'postRegister']);
 Route::middleware(['auth'])->group(function () {  // artinya semua route didalam group ini harus login dulu
 
     Route::get('/', [WelcomeController::class, 'index']);
+
+    // route profile
+    // ===== Jobsheet 8 Tugas 4 =====
+    Route::get('/profile', [UserController::class, 'profil'])->name('profil');
+    Route::get('/profile/edit', [UserController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [UserController::class, 'update'])->name('profile.update');
 
     // Route::middleware(['authorize:ADM'])->group(function(){
     // ======== Jobsheet 7 tugas 4 ======== 
