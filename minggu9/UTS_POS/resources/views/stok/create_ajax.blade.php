@@ -36,8 +36,8 @@
                 <!-- Tanggal Stok Masuk -->
                 <div class="form-group">
                     <label>Tanggal</label>
-                    <input type="datetime-local" name="stok_tanggal_masuk" id="stok_tanggal_masuk" class="form-control" required>
-                    <small id="error-stok_tanggal_masuk" class="error-text form-text text-danger"></small>
+                    <input type="datetime-local" name="stok_tanggal" id="stok_tanggal" class="form-control" required>
+                    <small id="error-stok_tanggal" class="error-text form-text text-danger"></small>
                 </div>
                 <!-- Jumlah Stok -->
                 <div class="form-group">
@@ -66,7 +66,7 @@ $(document).ready(function() {
                 required: true,
                 number: true
             },
-            stok_tanggal_masuk: {
+            stok_tanggal: {
                 required: true,
                 date: true
             },
@@ -89,7 +89,7 @@ $(document).ready(function() {
                             title: 'Berhasil',
                             text: response.message
                         });
-                        dataStok.ajax.reload();
+                        tableStok.ajax.reload();
                     } else {
                         $('.error-text').text('');
                         $.each(response.msgField, function(prefix, val) {

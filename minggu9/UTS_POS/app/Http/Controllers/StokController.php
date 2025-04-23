@@ -39,7 +39,7 @@ class StokController extends Controller
     // Ambil data stok dalam bentuk json untuk datatables
     public function list(Request $request)
     {
-        $stok = StokModel::with(['barang', 'user', 'supplier']);
+        $stok = StokModel::select('barang_id', 'supplier_id', 'user_id', 'stok_tanggal', 'stok_jumlah')->with(['barang', 'user', 'supplier']);
 
         if ($request->barang_id) {
             $stok->where('barang_id', $request->barang_id);
@@ -97,7 +97,7 @@ class StokController extends Controller
             'barang_id' => 'required|integer',
             'user_id' => 'required|integer',
             'supplier_id' => 'required|integer',
-            'stok_tanggal_masuk' => 'required|date',
+            'stok_tanggal' => 'required|date',
             'stok_jumlah' => 'required|integer|min:1',
         ]);
 
@@ -154,7 +154,7 @@ class StokController extends Controller
             'barang_id' => 'required|integer',
             'user_id' => 'required|integer',
             'supplier_id' => 'required|integer',
-            'stok_tanggal_masuk' => 'required|date',
+            'stok_tanggal' => 'required|date',
             'stok_jumlah' => 'required|integer|min:1',
         ]);
 
@@ -232,7 +232,7 @@ class StokController extends Controller
            $rules = [
                'barang_id' => ['required', 'integer', 'exists:m_barang,barang_id'],
                'supplier_id' => ['required', 'integer', 'exists:m_supplier,supplier_id'],
-               'stok_tanggal_masuk' => ['required', 'date_format:Y-m-d\TH:i'],
+               'stok_tanggal' => ['required', 'date_format:Y-m-d\TH:i'],
                'stok_jumlah' => ['required', 'integer', 'min:1'],
            ];
 
@@ -250,7 +250,7 @@ class StokController extends Controller
            $data['user_id'] = auth()->id();
 
            // Convert datetime-local to proper format
-           $data['stok_tanggal_masuk'] = \Carbon\Carbon::parse($data['stok_tanggal_masuk'])->format('Y-m-d H:i:s');
+           $data['stok_tanggal'] = \Carbon\Carbon::parse($data['stok_tanggal'])->format('Y-m-d H:i:s');
 
            StokModel::create($data);
 
@@ -291,8 +291,8 @@ class StokController extends Controller
            $rules = [
                'barang_id'    => ['required', 'integer', 'exists:m_barang,barang_id'],
                'user_id'      => ['required', 'integer', 'exists:m_user,user_id'],
-               'supplier_id'            => ['required', 'integer', 'exists:m_supplier,id'], // validasi supplier
-               'stok_tanggal_masuk' => ['required', 'date'],
+               'supplier_id'  => ['required', 'integer', 'exists:m_supplier,id'], // validasi supplier
+               'stok_tanggal' => ['required', 'date'],
                'stok_jumlah'  => ['required', 'integer', 'min:1'],
            ];
 
