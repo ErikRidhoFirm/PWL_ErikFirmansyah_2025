@@ -344,7 +344,8 @@ Route::middleware(['auth'])->group(function () {  // artinya semua route didalam
         Route::get('/{id}', [StokController::class, 'show']);             // Menampilkan detail user
         Route::get('/{id}/edit_ajax', [StokController::class, 'edit_ajax']); // Menampilkan halaman form edit user Ajax
         Route::put('/{id}/update_ajax', [StokController::class, 'update_ajax']); // Menyimpan perubahan data user Ajax
-        Route::get('/{id}/delete_ajax', [StokController::class, 'confirm_ajax']); // Untuk tampilkan form confirm delete user Ajax
+        Route::get('/{id}/delete_ajax', [StokController::class, 'confirm_ajax']);     //untuk tampilkan form confirm delete user ajax
+        Route::delete('/{id}/delete_ajax', [StokController::class, 'delete_ajax']);     //untuk hapus data user ajax
         Route::delete('/{id}/delete_ajax', [StokController::class, 'delete_ajax']); // Untuk hapus data user Ajax
         Route::delete('/{id}', [StokController::class, 'destroy']);       // Menghapus data user
     });
