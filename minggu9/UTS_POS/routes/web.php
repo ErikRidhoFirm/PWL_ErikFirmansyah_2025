@@ -5,6 +5,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StokController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
@@ -218,12 +219,6 @@ Route::middleware(['auth'])->group(function () {  // artinya semua route didalam
 
     Route::get('/', [WelcomeController::class, 'index']);
 
-    // route profile
-    // ===== Jobsheet 8 Tugas 4 =====
-    Route::get('/profile', [UserController::class, 'profil'])->name('profil');
-    Route::get('/profile/edit', [UserController::class, 'edit'])->name('profile.edit');
-    Route::post('/profile/update', [UserController::class, 'update'])->name('profile.update');
-
     // Route::middleware(['authorize:ADM'])->group(function(){
     // ======== Jobsheet 7 tugas 4 ======== 
     // artinya semua route didalam group ini harus punya role ADM (Administrator)
@@ -333,6 +328,25 @@ Route::middleware(['auth'])->group(function () {  // artinya semua route didalam
         Route::get('/{id}/delete_ajax', [UserController::class, 'confirm_ajax']);     //untuk tampilkan form confirm delete user ajax
         Route::delete('/{id}/delete_ajax', [UserController::class, 'delete_ajax']);     //untuk hapus data user ajax
         Route::delete('/{id}', [UserController::class, 'destroy']); //menghapus data user
+        Route::get('/profile', [UserController::class, 'profile'])->name('profil');
+        Route::get('/profile_ajax', [UserController::class, 'profile_ajax'])->name('profile.edit');
+        Route::post('/profile/update', [UserController::class, 'update'])->name('profile.update');
+        Route::get('/import', [UserController::class, 'import']); // ajax form upload excel
+        Route::post('/import_ajax', [UserController::class, 'import_ajax']); // ajax import excel
+        Route::get('/export_excel', [UserController::class, 'export_excel']); // export excel
+        Route::get('/export_pdf', [UserController::class, 'export_pdf']); // export pdf
+    });
+    Route::group(['prefix' => 'stok'], function () {
+        Route::get('/', [StokController::class, 'index']);                // Menampilkan halaman awal user
+        Route::post('/list', [StokController::class, 'list']);            // Menampilkan data user dalam bentuk json untuk datatable
+        Route::get('/create_ajax', [StokController::class, 'create_ajax']); // Menampilkan halaman form tambah user Ajax
+        Route::post('/ajax', [StokController::class, 'store_ajax']);      // Menyimpan data user baru Ajax
+        Route::get('/{id}', [StokController::class, 'show']);             // Menampilkan detail user
+        Route::get('/{id}/edit_ajax', [StokController::class, 'edit_ajax']); // Menampilkan halaman form edit user Ajax
+        Route::put('/{id}/update_ajax', [StokController::class, 'update_ajax']); // Menyimpan perubahan data user Ajax
+        Route::get('/{id}/delete_ajax', [StokController::class, 'confirm_ajax']); // Untuk tampilkan form confirm delete user Ajax
+        Route::delete('/{id}/delete_ajax', [StokController::class, 'delete_ajax']); // Untuk hapus data user Ajax
+        Route::delete('/{id}', [StokController::class, 'destroy']);       // Menghapus data user
     });
 });
 
@@ -411,9 +425,3 @@ Route::get('/user/{id}/edit_ajax', [UserController::class, 'edit_ajax']); // aja
 Route::put('/user/{id}/update_ajax', [UserController::class, 'update_ajax']); // ajax update
 Route::get('/user/{id}/delete_ajax', [UserController::class, 'confirm_ajax']); // ajax form confirm
 Route::delete('/user/{id}/delete_ajax', [UserController::class, 'delete_ajax']); // ajax delete
-Route::get('/user/import', [UserController::class, 'import']); // ajax form upload excel
-Route::post('/user/import_ajax', [UserController::class, 'import_ajax']); // ajax import excel
-// ===== Jobsheet 8 Tugas 2=====
-Route::get('/user/export_excel', [UserController::class, 'export_excel']); // export excel
-// ===== Jobsheet 8 Tugas 3=====
-Route::get('/user/export_pdf', [UserController::class, 'export_pdf']); // export pdf

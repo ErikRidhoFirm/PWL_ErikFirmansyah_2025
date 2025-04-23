@@ -739,11 +739,17 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ url('/barang') }}" class="nav-link {{ ($activeMenu == 'penjualan') ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-cash-register"></i>
+                <a href="{{ url('/penjualan') }}" class="nav-link {{ ($activeMenu == 'penjualan') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-receipt"></i>
                     <p>Transaksi Penjualan</p>
                 </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ url('/detailpenjualan') }}" class="nav-link {{ ($activeMenu == 'detailpenjualan') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-receipt"></i>
+                  <p>Detail Penjualan</p>
+              </a>
+          </li>
 
             {{-- Tugas prak-1 Jobsheet-7 --}}
             {{-- memberikan kode untuk sidebar pada logout agar bisa ditekan dan mengarahkan ke arah form logout --}}
