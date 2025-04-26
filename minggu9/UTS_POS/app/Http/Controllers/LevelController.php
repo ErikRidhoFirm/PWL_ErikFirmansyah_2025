@@ -227,6 +227,12 @@ public function edit_ajax(string $id) {
     return view('level.edit_ajax', ['level' => $level]);
 }
 
+public function show_ajax(string $id) {
+    $level = LevelModel::find($id);
+
+    return view('level.show_ajax', ['level' => $level]);
+}
+
 public function update_ajax(Request $request, $id)
 {
     // cek apakah request dari ajax

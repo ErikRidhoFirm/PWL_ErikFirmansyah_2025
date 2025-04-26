@@ -534,6 +534,14 @@ class UserController extends Controller
         return view('user.edit_ajax', ['user' => $user, 'level' => $level]);
     }
 
+    public function show_ajax(string $id)
+    {
+        $user = UserModel::find($id);
+        $level = LevelModel::select('level_id', 'level_nama')->get();
+
+        return view('user.show_ajax', ['user' => $user, 'level' => $level]);
+    }
+
     // prak-2 no-6
     public function update_ajax(Request $request, $id)
     {

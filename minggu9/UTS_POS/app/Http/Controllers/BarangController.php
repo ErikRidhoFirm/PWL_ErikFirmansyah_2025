@@ -257,8 +257,18 @@ class BarangController extends Controller
         // $kategori = KategoriModel::select('kategori_id', 'kategori_nama')->get();
 
         // Jobsheet 8 prak-1
-        $level = LevelModel::select('level_id', 'level_nama')->get();
-        return view('barang.edit_ajax', ['barang' => $barang, 'level' => $level]);
+        $kategori = KategoriModel::select('kategori_id', 'kategori_nama')->get();
+        return view('barang.edit_ajax', ['barang' => $barang, 'kategori' => $kategori]);
+    }
+
+    public function show_ajax(string $id)
+    {
+        $barang = BarangModel::find($id);
+        // $kategori = KategoriModel::select('kategori_id', 'kategori_nama')->get();
+
+        // Jobsheet 8 prak-1
+        $kategori = KategoriModel::select('kategori_id', 'kategori_nama')->get();
+        return view('barang.show_ajax', ['barang' => $barang, 'kategori' => $kategori]);
     }
 
     // JS6 - Tugas(m_barang) 

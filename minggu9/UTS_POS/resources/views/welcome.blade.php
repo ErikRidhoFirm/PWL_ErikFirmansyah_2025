@@ -134,15 +134,62 @@
 
 {{-- jobsheet 5 revisi --}}
 @extends('layouts.template')
-
 @section('content')
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Halo, apakabar!!!</h3>
-            <div class="card-tools"></div>
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <div class="alert alert-info shadow-sm">
+                <h4 class="mb-1"><i class="fas fa-smile-beam"></i> Selamat Datang!</h4>
+                <p class="mb-0">Halo, apakabar! Ini adalah halaman utama dari aplikasi <strong>Point of Sales</strong>. Semoga harimu menyenangkan!</p>
+            </div>
         </div>
-        <div class="card-body">
-            Selamat datang semua, ini adalah halaman utama dari aplikasi ini.
+
+        <!-- Kartu Statistik Ringan -->
+        <div class="col-md-3">
+            <div class="small-box bg-primary">
+                <div class="inner">
+                    <p>Pengguna Aktif</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <a href="{{ url('/user') }}" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <p>Produk Terdaftar</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <a href="{{ url('/barang') }}" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    <p>Supplier</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <a href="{{ url('/supplier') }}" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <p>Transaksi Hari Ini</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-cash-register"></i>
+                </div>
+                <a href="{{ url('/penjualan') }}" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
         </div>
     </div>
 @endsection

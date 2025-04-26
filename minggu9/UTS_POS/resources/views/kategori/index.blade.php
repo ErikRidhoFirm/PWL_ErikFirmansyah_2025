@@ -97,11 +97,11 @@
              {{-- Jobsheet 8 Tugas-3 --}}
              <a href="{{ url('/kategori/export_pdf') }}" class="btn btn-warning btn-sm mt-1"><i class="fa fa-file-excel"></i> Export Kategori</a>
             {{-- Jobsheet 8 Tugas 1 --}}
-            <button onclick="modalAction('{{ url('/kategori/import') }}')" class="btn btn-info mt-1">Import Barang</button>
+            <button onclick="modalAction('{{ url('/kategori/import') }}')" class="btn btn-info btn-sm mt-1">Import Barang</button>
             {{-- <a class="btn btn-primary mt-1" href="{{ url('kategori/create') }}">Tambah</a> --}}
             {{-- Jobsheet 8 Tugas 2 --}}
-            <a href="{{ url('/kategori/export_excel') }}" class="btn btn-primary"><i class="fa fa-file-excel"></i> Export Kategori</a>
-            <button onclick="modalAction('{{ url('/kategori/create_ajax') }}')" class="btn btn-success mt-1">Tambah Ajax</button>
+            <a href="{{ url('/kategori/export_excel') }}" class="btn btn-primary btn-sm mt-1 "><i class="fa fa-file-excel"></i> Export Kategori</a>
+            <button onclick="modalAction('{{ url('/kategori/create_ajax') }}')" class="btn btn-success btn-sm mt-1">Tambah Ajax</button>
         </div>
     </div>
  

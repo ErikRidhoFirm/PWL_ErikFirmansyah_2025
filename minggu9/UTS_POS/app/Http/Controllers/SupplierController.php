@@ -216,7 +216,13 @@ class SupplierController extends Controller
 
         return view('supplier.edit_ajax', ['supplier' => $supplier]);
     }
+    public function show_ajax(string $id)
+    {
+        $supplier = SupplierModel::find($id);
 
+        // Jobsheet 8 prak-1
+        return view('supplier.show_ajax', ['supplier' => $supplier]);
+    }
     public function update_ajax(Request $request, string $id)
     {
         if ($request->ajax() || $request->wantsJson()) {

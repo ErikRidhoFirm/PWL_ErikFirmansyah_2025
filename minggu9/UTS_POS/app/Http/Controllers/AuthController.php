@@ -86,7 +86,7 @@ class AuthController extends Controller
             'username' => $request->username,
             'nama'     => $request->nama,
             'password' => $request->password,       //tidak perlu di hash, karena sudah otomatis di-hash oleh casts di model
-            'level_id' => $request->level_id
+            'level_id' => $request->level_id,
         ]);
 
         // terdapat response berhasil 

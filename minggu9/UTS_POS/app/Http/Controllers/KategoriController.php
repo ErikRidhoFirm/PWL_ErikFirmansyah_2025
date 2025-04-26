@@ -236,6 +236,13 @@ class KategoriController extends Controller
         return view('kategori.edit_ajax', ['kategori' => $kategori]);
     }
 
+    public function show_ajax(string $id)
+    {
+        $kategori = KategoriModel::find($id);
+
+        return view('kategori.show_ajax', ['kategori' => $kategori]);
+    }
+
     public function update_ajax(Request $request, $id)
     {
         // cek apakah request dari ajax
@@ -246,7 +253,7 @@ class KategoriController extends Controller
 
                 // ======= Jobsheet 8 Tugas 1 =======
                 'kategori_kode'  => ['required', 'string', 'max:10', 'unique:m_kategori,kategori_kode,' . $id . ',kategori_id'],
-                'kategori_nama'  => ['required,', 'string', 'max:100'],
+                'kategori_nama'  => ['required', 'string', 'max:100'],
             ];
 
             $validator = Validator::make($request->all(), $rules);

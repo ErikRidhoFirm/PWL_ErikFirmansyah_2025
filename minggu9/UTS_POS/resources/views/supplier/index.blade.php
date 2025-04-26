@@ -182,49 +182,6 @@
 
 @push('js')
     <script>
-        // $(document).ready(function() {
-        //     var dataSupplier = $('#table_supplier').DataTable({
-        //         // serverSide : true , jika ingin menggunakan server side processing
-        //         serverSide: true,
-        //         ajax: {
-        //             "url": "{{ url('supplier/list') }}",
-        //             "dataType": "json",
-        //             "type": "POST",
-        //         },
-        //         columns: [
-        //             {
-        //                 // nomor urut dari laravel datatable addIndexColumn ()
-        //                               data: "DT_RowIndex",
-        //                               className: "text-center",
-        //                               orderable: false,
-        //                               searchable: false
-        //                           }, {
-        //                               data: "supplier_kode",
-        //                               className: "",
-        //                               // orderable : true , jika ingin kolom ini bisa diurutkan
-        //                               orderable: true,
-        //                               // searchable : true , jika ingin kolom ini bisa dicari
-        //                               searchable: true
-        //                           }, {
-        //                               data: "supplier_nama",
-        //                               className: "",
-        //                               orderable: true,
-        //                               searchable: true
-        //                           }, {
-        //                               // mengambil data level hasil dari ORM berelasi
-        //                               data: "supplier_alamat",
-        //                               className: "",
-        //                               orderable: false,
-        //                               searchable: false
-        //                           }, {
-        //                               data: "aksi",
-        //                               className: "",
-        //                               orderable: false,
-        //                               searchable: false
-        //                           }
-        //                       ]
-        //                   });
-        //               });
 
         // Tugas Jobsheet 6 
         function modalAction(url = '') {

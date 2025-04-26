@@ -5,7 +5,12 @@
         <div class="card-header">
             <h3 class="card-title">{{ $page->title }}</h3>
             <div class="card-tools">
-                <button onclick="modalAction('{{ url('stok/create_ajax') }}')" class="btn btn-sm btn-success mt-1">Tambah
+                <a href="{{ url('/stok/export_pdf') }}" class="btn btn-warning btn-sm mt-1"><i class="fa fa-file-excel"></i> Export Level</a>
+                <button onclick="modalAction('{{ url('/stok/import') }}')" class="btn btn-info btn-sm mt-1">Import Level</button>
+                {{-- <a href="{{ url('/level/create') }}" class="btn btn-primary">Tambah Data</a> --}}
+                {{-- Jobsheet 8 Tugas 2 --}}
+            <a href="{{ url('/stok/export_excel') }}" class="btn btn-primary btn-sm mt-1"><i class="fa fa-file-excel"></i> Export Level</a>
+                <button onclick="modalAction('{{ url('stok/create_ajax') }}')" class="btn btn-sm btn-success btn-sm mt-1">Tambah
                     Ajax</button>
             </div>
         </div>

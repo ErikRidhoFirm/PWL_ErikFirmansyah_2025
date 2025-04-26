@@ -6,8 +6,7 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <form id="updateProfileForm" method="POST" enctype="multipart/form-data"
-            action="{{ url('user/profile_update') }}">
+        <form id="updateProfileForm" method="POST" enctype="multipart/form-data" action="{{ url('/profile_update') }}">
             @csrf
             <div class="modal-body">
                 <!-- Hidden field untuk mengirim id user -->
