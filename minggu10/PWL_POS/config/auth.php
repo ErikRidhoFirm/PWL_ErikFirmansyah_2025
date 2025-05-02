@@ -40,7 +40,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        // ===== Jobsheet 10 prak-1 no-26 =====
+        'api' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
     ],
+],
 
     /*
     |--------------------------------------------------------------------------
