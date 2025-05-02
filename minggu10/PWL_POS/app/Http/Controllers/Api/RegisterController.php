@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\UserModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -19,14 +21,14 @@ class RegisterController extends Controller
 
         // if validations fails
         if ($validator->fails()) {
-            return reponse()->json($validator->errors(), 422);
+            return response()->json($validator->errors(), 422);
         }
 
         // create user 
         $user = UserModel::create([
             'username' => $request->username,
             'nama' => $request->nama,
-            'passowrd' => $bcrypt($request->passowrd),
+            'passowrd' => bcrypt($request->passowrd),
             'level_id' => $request->level_id,
         ]);
 
