@@ -38,7 +38,7 @@ class UserModel extends Authenticatable
     // ========= Jobsheet 7 =================
     protected $fillable = ['username', 'password', 'nama', 'level_id', 'profile_photo', 'created_at', 'updated_at'];
 
-    protected $hidden   = ['password'];  // jangan ditampilkan saat select
+    // protected $hidden   = ['password'];  // jangan ditampilkan saat select
 
     protected $casts    = ['password' => 'hashed'];  // casting password agar otomatis di hash
 
