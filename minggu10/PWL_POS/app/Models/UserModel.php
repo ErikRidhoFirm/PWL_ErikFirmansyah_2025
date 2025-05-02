@@ -77,4 +77,13 @@ class UserModel extends Authenticatable
     {
         return $this->level->level_kode;
     }
+
+    // ===== Jobsheet 10 prak-1 no-7 =====
+    public function getJWTIdentifier() {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims(){
+        return [];
+    }
 }
